@@ -193,7 +193,7 @@ export function calcPoolTokensByRatio(ratio, totalShares) {
   if (ratio.isNaN()) {
     return '0';
   }
-  // TODO - fix calcs so no buffer is needed
+  // @TODO - fix calcs so no buffer is needed
   const buffer = bnum(100);
   return bnum(ratio)
     .times(toWei(totalShares))
@@ -232,7 +232,8 @@ export function logRevertedTx(
   overrides: any
 ) {
   // address: 0xd25a786E889eEc258e3c2dA2642eac26D9c103df
-  const dummyPrivateKey = '964ec3329acce6c1ded32c541ccf65b13432117a4f454d0d5b5b1aadedc994c7';
+  const dummyPrivateKey =
+    '964ec3329acce6c1ded32c541ccf65b13432117a4f454d0d5b5b1aadedc994c7';
   const dummyWallet = new Wallet(dummyPrivateKey).connect(provider);
   const loggingContract = contract.connect(dummyWallet);
   loggingContract[action](...params, overrides);

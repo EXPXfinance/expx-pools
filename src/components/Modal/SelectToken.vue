@@ -3,14 +3,9 @@
     <UiModalForm>
       <template slot="header">
         <h3 v-text="$t('selectToken')" class="text-white mb-4" />
-        <Search
-          v-model="query"
-          @input="handleQuery"
-          v-bind:placeholder="$t('searchTypes')"
-        />
+        <Search v-model="query" v-bind:placeholder="$t('searchTypes')" />
       </template>
-      <UiLoading v-if="loading" class="big py-3" />
-      <ul v-else>
+      <ul>
         <li
           class="py-3 text-center"
           v-if="query && Object.keys(tokens).length === 0"
@@ -51,15 +46,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import { getAddress } from '@ethersproject/address';
-import { bnum, isValidAddress, normalizeBalance } from '@/helpers/utils';
+import { bnum, normalizeBalance } from '@/helpers/utils';
 
 export default {
   props: ['open', 'not'],
   data() {
     return {
-      loading: false,
       query: ''
     };
   },
@@ -92,13 +84,8 @@ export default {
             if (this.not.includes(token[0])) return false;
             const address = token[0];
             const query = this.query.toLowerCase();
-            if (isValidAddress(query)) {
-              return address.toLowerCase() === query;
-            } else {
-              const symbol = token[1].symbol.toLowerCase();
-              const name = token[1].name.toLowerCase();
-              return symbol.includes(query) || name.includes(query);
-            }
+
+            return address.toLowerCase() === query;
           })
           .sort((a, b) => {
             if (a[1].value && b[1].value) return b[1].value - a[1].value;
@@ -110,12 +97,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'loadTokenMetadata',
-      'loadPricesByAddress',
-      'getBalances',
-      'getAllowances'
-    ]),
     selectToken(token) {
       if (this.isDisabled(token)) {
         return;
@@ -126,26 +107,6 @@ export default {
     close() {
       this.$emit('close');
       this.query = '';
-    },
-    async handleQuery() {
-      if (!isValidAddress(this.query)) {
-        return;
-      }
-      const address = getAddress(this.query);
-      if (this.web3.tokenMetadata[address]) {
-        return;
-      }
-      this.loading = true;
-      const promises = [
-        this.loadTokenMetadata([address]),
-        this.loadPricesByAddress([address])
-      ];
-      if (this.web3.account) {
-        promises.push(this.getBalances([address]));
-        promises.push(this.getAllowances([address]));
-      }
-      await Promise.all(promises);
-      this.loading = false;
     },
     isDisabled(address) {
       return this.config.untrusted.includes(address);

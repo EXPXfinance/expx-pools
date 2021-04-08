@@ -5,12 +5,15 @@
         class="tooltipped tooltipped-n"
         :value="type"
         :options="poolTypes"
-        :aria-label="
-          $t(type === 'SMART_POOL' ? 'createSmartTip' : 'createSharedTip')
-        "
+        :aria-label="$t(isSmartPools ? 'createSmartTip' : 'createSharedTip')"
         @select="handleSelectType"
       />
     </div>
+    <MessageError
+      v-if="isSmartPools"
+      :text="$t('smartPoolsUnderDev')"
+      class="mb-4"
+    />
     <div class="d-flex flex-items-center px-4 px-md-0 mb-3">
       <h4 v-text="$t('assets')" class="flex-auto" />
     </div>
@@ -130,7 +133,7 @@
         max="10"
       />
     </div>
-    <div v-if="type === 'SMART_POOL'">
+    <div v-if="isSmartPools">
       <FormCrp
         :tokenSymbol="crp.poolTokenSymbol"
         :tokenName="crp.poolTokenName"
@@ -335,7 +338,7 @@ export default {
         return this.$t('errFeeRange');
       }
       // Smart pool validation
-      if (this.type == 'SMART_POOL') {
+      if (this.isSmartPools) {
         if (!this.crp.poolTokenSymbol) {
           return this.$t('errEmptyTokenSymbol');
         }
@@ -405,6 +408,9 @@ export default {
     },
     isTokensUsedUp() {
       return Object.keys(this.config.tokens).length === this.tokens.length;
+    },
+    isSmartPools() {
+      return this.type === 'SMART_POOL';
     }
   },
   methods: {
@@ -481,7 +487,7 @@ export default {
         };
         await this.createPool(poolParams);
       }
-      if (this.type === 'SMART_POOL') {
+      if (this.isSmartPools) {
         const {
           poolTokenSymbol,
           poolTokenName,

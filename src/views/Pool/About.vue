@@ -194,6 +194,16 @@
         v-text="`${$t('feeFactor')}: ${factors.feeFactor.toFixed(4)}`"
         class="text-white"
       />
+      <h5 class="text-white">
+        <span
+          v-if="isNaN(factors.ratioFactor)"
+          v-text="`${$t('ratioFactor')}: N/A (no tokens)`"
+        />
+        <span
+          v-else
+          v-text="`${$t('ratioFactor')}: ${factors.ratioFactor.toFixed(4)}`"
+        />
+      </h5>
     </div>
   </UiTable>
 </template>
@@ -221,7 +231,7 @@ export default {
   },
   computed: {
     factors() {
-      return getFactors(this.ePool, this.config.chainId);
+      return getFactors(this.ePool);
     },
     rights() {
       return filterObj(this.ePool.metadata.rights, right => right[1]);

@@ -24,6 +24,13 @@
         </UiButton>
       </div>
     </div>
+
+    <MessageError
+      v-if="pool.crp"
+      :text="$t('smartPoolsUnderDev')"
+      class="mb-4"
+    />
+
     <PoolBoxes :pool="pool" :ePool="ePool" />
     <Chart :pool="pool" />
     <Tabs :pool="pool" />

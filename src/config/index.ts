@@ -1,11 +1,15 @@
 import merge from 'lodash/merge';
 import mainnet from '@/config/mainnet.json';
-import { tokens } from '@/helpers/tokens';
+import testnet from '@/config/testnet.json';
+import { tokensTestnet } from '@/helpers/tokens';
+import { tokensMainnet } from '@/helpers/tokens';
 
-const configs = { mainnet };
-configs.mainnet = merge(tokens, configs.mainnet);
+const configs = { mainnet, testnet };
 
-const network = process.env.VUE_APP_NETWORK || 'mainnet';
+configs.testnet = merge(tokensTestnet, configs.testnet);
+configs.mainnet = merge(tokensMainnet, configs.mainnet);
+
+const network = process.env.VUE_APP_NETWORK || 'testnet';
 const config = configs[network];
 
 export default config;

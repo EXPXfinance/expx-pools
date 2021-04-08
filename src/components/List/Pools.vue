@@ -19,8 +19,8 @@
         <div v-text="$t('volume24')" class="column hide-sm hide-md hide-lg" />
       </UiTableTh>
       <div v-infinite-scroll="loadMore" infinite-scroll-distance="10">
-        <div v-if="pools.length > 0">
-          <ListPool v-for="(pool, i) in pools" :key="i" :pool="pool" />
+        <div v-if="poolsPrepared.length > 0">
+          <ListPool v-for="(pool, i) in poolsPrepared" :key="i" :pool="pool" />
         </div>
         <UiTableTr v-else-if="!loading">
           <div v-text="$t('emptyState')" />
@@ -45,6 +45,7 @@
 <script>
 import { mapActions } from 'vuex';
 import { formatFilters, ITEMS_PER_PAGE } from '@/helpers/utils';
+import { getPoolLiquidity } from '@/helpers/price';
 
 export default {
   props: ['query', 'title'],
@@ -55,6 +56,16 @@ export default {
       pools: [],
       filters: formatFilters(this.$route.query)
     };
+  },
+  computed: {
+    poolsPrepared() {
+      return this.pools
+        .map(pool => ({
+          ...pool,
+          liquidity: getPoolLiquidity(pool, this.price.values)
+        }))
+        .sort((a, b) => b.liquidity - a.liquidity);
+    }
   },
   watch: {
     query() {
@@ -82,7 +93,9 @@ export default {
       this.page++;
       const page = this.page;
       let query = this.query || {};
-      query = { ...query, page };
+
+      // TODO remove first for correct pagination
+      query = { ...query, page, first: 1000 };
       const pools = await this.getPools(query);
       this.pools = this.pools.concat(pools);
       this.loading = false;

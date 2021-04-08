@@ -131,7 +131,7 @@
     "myBalance": "My balance",
     "myLiquidity": "My liquidity",
     "myPoolBalance": "My pool balance",
-    "myPools": "My pools",
+    "myPools": "My smart pools",
     "myPoolShare": "My pool share",
     "myProxy": "My proxy address (used for adding liquidity and creating pools)",
     "myShare": "My share",
@@ -258,5 +258,6 @@
     "wrapBnbToWbnb": "Wrap BNB to wBNB",
     "wrapFactor": "Wrap factor",
     "wrapWbnbToBnb": "Unwrap wBNB to BNB",
-    "wrongNetwork": "Wrong network"
+    "wrongNetwork": "Wrong network",
+    "smartPoolsUnderDev": "Smart pools are under development, please use it at your own risk"
 }

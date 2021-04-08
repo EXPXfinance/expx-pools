@@ -1,4 +1,54 @@
-export const tokens = {
+export const tokensTestnet = {
+  untrusted: [],
+  tokens: {
+    '0x5eCa0c9D8Ca1bae7cA6a3CC592c61966D7133FC8': {
+      address: '0x5eCa0c9D8Ca1bae7cA6a3CC592c61966D7133FC8',
+      id: 'cake',
+      symbol: 'CAKE',
+      name: 'PancakeSwap',
+      decimals: 18,
+      precision: 4,
+      color: '#24C7D6',
+      hasIcon: false,
+      logo: 'cake.png'
+    },
+    '0xc92808e1D74Bc795fC3a9A4396d15dA1F23190DA': {
+      address: '0xc92808e1D74Bc795fC3a9A4396d15dA1F23190DA',
+      id: 'busd',
+      symbol: 'BUSD',
+      name: 'Binance-Peg BUSD',
+      decimals: 18,
+      precision: 4,
+      color: '#BD8A0B',
+      hasIcon: false,
+      logo: 'busd.png'
+    },
+    '0x065C77e9A8F0FBE475f88a3511fB6b3e5c000d94': {
+      address: '0x065C77e9A8F0FBE475f88a3511fB6b3e5c000d94',
+      id: 'burger',
+      symbol: 'BURGER',
+      name: 'Burger Swap',
+      decimals: 18,
+      precision: 4,
+      color: '#557064',
+      hasIcon: false,
+      logo: 'burger.png'
+    },
+    '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd': {
+      address: '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
+      id: 'wbnb',
+      name: 'Wrapped BNB',
+      symbol: 'WBNB',
+      decimals: 18,
+      precision: 4,
+      color: '#557064',
+      hasIcon: false,
+      logo: 'wbnb.png'
+    }
+  }
+};
+
+export const tokensMainnet = {
   untrusted: [],
   tokens: {
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82': {
@@ -44,6 +94,17 @@ export const tokens = {
       color: '#c5ccb8',
       hasIcon: false,
       logo: 'ada.png'
+    },
+    '0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18': {
+      address: '0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18',
+      id: 'band',
+      symbol: 'BAND',
+      name: 'Binance-Peg Band Protocol',
+      decimals: 18,
+      precision: 4,
+      color: '#8fb5cc',
+      hasIcon: false,
+      logo: 'band.png'
     },
     '0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf': {
       address: '0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf',
@@ -133,6 +194,17 @@ export const tokens = {
       hasIcon: false,
       logo: 'eth.png'
     },
+    '0xd944f1D1e9d5f9Bb90b62f9D45e447D989580782': {
+      address: '0xd944f1D1e9d5f9Bb90b62f9D45e447D989580782',
+      id: 'iota',
+      symbol: 'IOTA',
+      name: 'Binance-Peg IOTA',
+      decimals: 6,
+      precision: 4,
+      color: '#70778d',
+      hasIcon: false,
+      logo: 'iota.png'
+    },
     '0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD': {
       address: '0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD',
       id: 'link',
@@ -154,6 +226,17 @@ export const tokens = {
       color: '#8d6268',
       hasIcon: false,
       logo: 'ltc.png'
+    },
+    '0xFd7B3A77848f1C2D67E05E54d78d174a0C850335': {
+      address: '0xFd7B3A77848f1C2D67E05E54d78d174a0C850335',
+      id: 'ont',
+      symbol: 'ONT',
+      name: 'Binance-Peg Ontology',
+      decimals: 18,
+      precision: 4,
+      color: '#94ccae',
+      hasIcon: false,
+      logo: 'ont.png'
     },
     '0x55d398326f99059fF775485246999027B3197955': {
       address: '0x55d398326f99059fF775485246999027B3197955',

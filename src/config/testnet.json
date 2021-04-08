@@ -1,0 +1,25 @@
+{
+  "network": "testnet",
+  "chainId": 97,
+  "defaultPrecision": 2,
+  "rpcUrl": "https://node-stage.expx.exchange:8547",
+  "wsUrl": "wss://node-stage.expx.exchange:8548",
+  "subgraphUrl": "https://graph-stage.expx.exchange:8888/subgraphs/name/expx/expx",
+  "backendUrl": "https://backend-stage.expx.exchange",
+  "exchangeUrl": "https://swaps-stage.expx.exchange",
+  "explorer": "https://testnet.bscscan.com",
+  "addresses": {
+    "eFactory": "0xeEd534746485D88Db7440b0453b5d9991e1E0042",
+    "eActions": "0x414bf582ff63E16c88001F2858aCE17641227EAf",
+    "dsProxyRegistry": "0x64A63114497B04616F809f1d87663B711BC268b0",
+    "crpFactory": "0x19Cd7e7947858776Be289e52803174b636535CfC",
+    "wbnb": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+    "multicall": "0xbD53327763734275E1b1Dd295e8183dac428F752"
+  },
+  "connectors": {
+    "injected": {
+      "id": "injected",
+      "name": "MetaMask"
+    }
+  }
+}
